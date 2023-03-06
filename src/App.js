@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Index from './routes';
 
 const App = () => {
   return (
-    <div>Gwent</div>
+    <Index />
   )
 }
 
