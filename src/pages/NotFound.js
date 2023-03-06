@@ -1,9 +1,14 @@
-import React from 'react'
+import logo from '../images/giphy.gif';
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
     return (
-        <div>NotFound</div>
-    )
+        <section className="not-found flex-centered">
+            <img className="not-found__logo" src={logo} alt="not found logo" />
+            <p className="not-found__body">Sorry, this page was not found..</p>
+            <Link to='/'>Go back home</Link>
+        </section>
+    );
 }
 
-export default NotFound
+export default NotFound;
