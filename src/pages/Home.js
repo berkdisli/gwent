@@ -1,21 +1,27 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCards, showCards } from '../features/cardsSlice'
+import { fetchCards } from '../features/cardsSlice'
 
 const Home = () => {
     const dispatch = useDispatch();
-    const cards = useSelector(state => state.cards);
+    const cardsObject = useSelector(state => state.cards);
+    const {cards, monster, nilfgaard, skellige, scoiatael, northernRealms, neutral} = cardsObject;
+
     useEffect(() => {
         dispatch(fetchCards())
-    }, [])
+    }, []);
 
-    cards.cards && dispatch(showCards())
-    
     return (
         <div>Home
-            {cards.loading && <div>Loading</div>}
-            {cards.error && <div>Error</div>}
-            {cards.cards && console.log(cards.cards)}
+            {cardsObject.loading && <div>Loading</div>}
+            {cardsObject.error && <div>Error</div>}
+            {cardsObject && console.log("All Cards:", cards)}
+            {cardsObject && console.log("Monster", monster)}
+            {cardsObject && console.log("Nilfgaard", nilfgaard)}
+            {cardsObject && console.log("Skellige", skellige)}
+            {cardsObject && console.log("Scoiatael", scoiatael)}
+            {cardsObject && console.log("Northern Realms", northernRealms)}
+            {cardsObject && console.log("Neutral", neutral)}
         </div>
         
     )
