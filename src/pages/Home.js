@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import logo from '../images/gwent.png';
 
 const Home = () => {
     return (
-        <div>Home</div>
+        <div className="title">
+            <img className="gwent-logo" src={logo} alt="gwent" />
+        </div>
+
+
     )
 }
 

@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --border-radius: 0.6rem;
+  --text-color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  outline: none;
+  font-family: "Teko", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  background-color: rgb(16, 90, 56);
+  height: 5vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 1rem;
   color: white;
+  font-size: 1.6rem;
 }
 
-.App-link {
-  color: #61dafb;
+.gwent-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.footer {
+  background-color: rgb(16, 90, 56);
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: white;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 600px) {
+  .gwent-logo {
+    font-size: 5em;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 450px) {
+  .gwent-logo {
+    font-size: 4.5em;
+    top: 20vh;
+  }
+}
+
+@media (max-width: 370px) {
+  .gwent-logo {
+    font-size: 4em;
+    top: 15vh;
   }
 }
