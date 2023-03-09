@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Error = () => {
+import logo from '../images/error.gif';
+
+const Error = ({ message }) => {
     return (
-        <div>Error</div>
-    )
+        <section className="error flex-centered">
+            <img className="error__logo" src={logo} alt="error logo" />
+            <p className="error__body">{message}</p>
+        </section>
+    );
 }
 
-export default Error
+export default Error;
