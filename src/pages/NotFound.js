@@ -6,7 +6,7 @@ const NotFound = () => {
         <section className="not-found flex-centered">
             <img className="not-found__logo" src={logo} alt="not found logo" />
             <p className="not-found__body">Sorry, this page was not found..</p>
-            <Link to='/'>Go back home</Link>
+            <Link to='/'>Go back Master Witcher</Link>
         </section>
     );
 }

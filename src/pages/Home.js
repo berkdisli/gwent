@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import logo from '../images/gwent.png';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCards } from '../features/cardsSlice'
 
