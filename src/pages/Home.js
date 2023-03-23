@@ -1,32 +1,12 @@
-import React, { useEffect } from 'react';
-import logo from '../images/gwent.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCards } from '../features/cardsSlice';
+import React from "react";
+import logo from "../images/gwent.png";
 
 const Home = () => {
-    const dispatch = useDispatch();
-    const cardsObject = useSelector(state => state.cards);
-    const { cards, monster, nilfgaard, skellige, scoiatael, northernRealms, neutral } = cardsObject;
+  return (
+    <div className='title'>
+      <img className='gwent-logo' src={logo} alt='gwent' />
+    </div>
+  );
+};
 
-    useEffect(() => {
-        dispatch(fetchCards())
-    }, [dispatch]);
-
-    return (
-        <div className="title">
-            <img className="gwent-logo" src={logo} alt="gwent" />
-            {cardsObject.loading && <div>Loading</div>}
-            {cardsObject.error && <div>Error</div>}
-            {cardsObject && console.log("All Cards:", cards)}
-            {cardsObject && console.log("Monster", monster)}
-            {cardsObject && console.log("Nilfgaard", nilfgaard)}
-            {cardsObject && console.log("Skellige", skellige)}
-            {cardsObject && console.log("Scoiatael", scoiatael)}
-            {cardsObject && console.log("Northern Realms", northernRealms)}
-            {cardsObject && console.log("Neutral", neutral)}
-        </div>
-
-    )
-}
-
-export default Home
+export default Home;

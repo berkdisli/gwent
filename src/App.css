@@ -115,6 +115,13 @@ html {
   align-items: center;
 }
 
+/* MAIN SECTIONS */
+
+.player-board{
+  width: 80vw;
+  margin: 2rem auto;
+}
+
 @media (max-width: 600px) {
   .gwent-logo {
     font-size: 5em;

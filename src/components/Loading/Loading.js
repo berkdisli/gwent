@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo from '../images/witcher.gif';
+import logo from '../../images/witcher.gif';
 
 const Loading = () => {
     return (
