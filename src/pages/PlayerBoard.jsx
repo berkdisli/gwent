@@ -13,8 +13,14 @@ import {
   selectSkellige,
 } from "../features/cardsSlice";
 import { DECK } from "../static/values";
-import { selectPlayer, setPlayer } from "../features/playerSlice";
+import {
+  selectPlayer,
+  setPlayer,
+  setPlayer1Deck,
+  setPlayer2Deck,
+} from "../features/playerSlice";
 import { useNavigate } from "react-router-dom";
+import styles from "../components/CardDecks/CardDecks.module.css";
 
 const PlayerBoard = () => {
   const dispatch = useDispatch();
@@ -42,6 +48,11 @@ const PlayerBoard = () => {
     setCurrentDeck(monster);
   }, [monster]);
 
+  const toggleButtonGroup = (current, siblings, className) => { 
+    Array.from(siblings).map((sibling) => sibling.classList.remove(className));
+    current.classList.add(className);
+  }
+
   const chooseDeck = (event) => {
     switch (event.target.innerText) {
       case DECK.MONSTER:
@@ -65,29 +76,45 @@ const PlayerBoard = () => {
       default:
         setCurrentDeck([]);
     }
+    toggleButtonGroup(event.currentTarget, event.currentTarget.parentElement.children, styles.chosen)
+    player === 1 ? dispatch(setPlayer1Deck(currentDeck)) : dispatch(setPlayer2Deck(currentDeck));
   };
 
   const handleReady = () => {
-    player === 1 ? dispatch(setPlayer(2)) : navigate('/game');
+    player === 1 ? dispatch(setPlayer(2)) : navigate("/game");
   };
 
   const handleGoBack = () => {
     dispatch(setPlayer(1));
-  }
+  };
+
+  const handleExitGame = () => {
+    dispatch(setPlayer(1));
+    dispatch(setPlayer1Deck([]));
+    dispatch(setPlayer2Deck([]));
+    navigate("/");
+  };
 
   return (
     <section className='player-board'>
+      <div onClick={handleExitGame}>Exit the game</div>
       {error && <Error message={error} />}
       {loading ? (
         <Loading />
       ) : (
         <>
-          <div className="player__header">Player {player}</div>
+          <div className='player__header'>Player {player}</div>
           <CardDecks handleClick={chooseDeck} />
           <CardsList cards={currentDeck} />
           <div className='player__footer'>
             {player === 2 && (
-              <div className='player__button' id='goBack-btn' onClick={handleGoBack}>Go Back to Player 1</div>
+              <div
+                className='player__button'
+                id='goBack-btn'
+                onClick={handleGoBack}
+              >
+                Go Back to Player 1
+              </div>
             )}
             <div className='player__button' onClick={handleReady}>
               I am Ready

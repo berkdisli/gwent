@@ -20,3 +20,7 @@
   justify-content: space-evenly;
   gap: 1rem;
 }
+
+.chosen{
+  box-shadow: 0 0 8px rgb(187, 114, 50);
+}
