@@ -13,10 +13,14 @@ import {
   selectSkellige,
 } from "../features/cardsSlice";
 import { DECK } from "../static/values";
+import { selectPlayer, setPlayer } from "../features/playerSlice";
+import { useNavigate } from "react-router-dom";
 
 const PlayerBoard = () => {
   const dispatch = useDispatch();
-  const [currentDeck, setCurrentDeck] = useState(useSelector(selectMonsters));
+  const navigate = useNavigate();
+
+  const player = useSelector(selectPlayer);
 
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -28,33 +32,47 @@ const PlayerBoard = () => {
   const northernRealms = useSelector(selectNorthernRealms);
   const neutral = useSelector(selectNeutral);
 
+  const [currentDeck, setCurrentDeck] = useState([]);
+
   useEffect(() => {
     dispatch(fetchCards());
   }, [dispatch]);
 
+  useEffect(() => {
+    setCurrentDeck(monster);
+  }, [monster]);
+
   const chooseDeck = (event) => {
-    switch(event.target.innerText) {
+    switch (event.target.innerText) {
       case DECK.MONSTER:
         setCurrentDeck(monster);
-      break;
+        break;
       case DECK.NEUTRAL:
         setCurrentDeck(neutral);
-      break;
+        break;
       case DECK.NILFGAARD:
         setCurrentDeck(nilfgaard);
-      break;
+        break;
       case DECK.SCOIATAEL:
         setCurrentDeck(scoiatael);
-      break;
+        break;
       case DECK.SKELLIGE:
         setCurrentDeck(skellige);
-      break;
+        break;
       case DECK.NORTHERN_REALMS:
         setCurrentDeck(northernRealms);
-      break;
+        break;
       default:
         setCurrentDeck([]);
     }
+  };
+
+  const handleReady = () => {
+    player === 1 ? dispatch(setPlayer(2)) : navigate('/game');
+  };
+
+  const handleGoBack = () => {
+    dispatch(setPlayer(1));
   }
 
   return (
@@ -64,17 +82,19 @@ const PlayerBoard = () => {
         <Loading />
       ) : (
         <>
-          <CardDecks chooseDeck={chooseDeck}/>
+          <div className="player__header">Player {player}</div>
+          <CardDecks handleClick={chooseDeck} />
           <CardsList cards={currentDeck} />
+          <div className='player__footer'>
+            {player === 2 && (
+              <div className='player__button' id='goBack-btn' onClick={handleGoBack}>Go Back to Player 1</div>
+            )}
+            <div className='player__button' onClick={handleReady}>
+              I am Ready
+            </div>
+          </div>
         </>
       )}
-
-      {/* {monster && console.log("Monster", monster)}
-      {nilfgaard && console.log("Nilfgaard", nilfgaard)}
-      {skellige && console.log("Skellige", skellige)}
-      {scoiatael && console.log("Scoiatael", scoiatael)}
-      {northernRealms && console.log("Northern Realms", northernRealms)}
-      {neutral && console.log("Neutral", neutral)} */}
     </section>
   );
 };
