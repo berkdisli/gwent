@@ -3,8 +3,6 @@ import logo from '../images/gwent.png';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCards } from '../features/cardsSlice'
 
-import logo from '../images/gwent.png';
-
 const Home = () => {
     const dispatch = useDispatch();
     const cardsObject = useSelector(state => state.cards);
