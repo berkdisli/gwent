@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import logo from '../images/gwent.png';
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchCards } from '../features/cardsSlice'
-
-import logo from '../images/gwent.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCards } from '../features/cardsSlice';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -12,7 +10,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(fetchCards())
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="title">
