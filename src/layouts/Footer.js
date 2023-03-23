@@ -2,9 +2,6 @@ import React from 'react';
 
 import { FaYoutube } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
-import { FaHome } from 'react-icons/fa'; //FaHome
-import { Link } from 'react-router-dom';
-
 
 const Footer = () => {
     const creatorLinks = [
