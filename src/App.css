@@ -39,7 +39,7 @@ html {
 .home {
   background-image: url(images/background.jpg);
   background-color: rgb(70, 2, 2);
-  height: 41rem;
+  height: 100vh;
 }
 
 .gwent-logo {
@@ -56,7 +56,7 @@ html {
   cursor: pointer;
   color: rgb(70, 2, 2);
   background-color: #fff;
-  margin-top: 2rem;
+  margin-top: 5rem;
   padding-top: 1rem;
   justify-content: center;
   text-align: center;
@@ -70,7 +70,8 @@ html {
 }
 /* footer */
 .footer {
-  position: bottom;
+  position: absolute;
+  bottom: 0;
   display: grid;
   grid-template: 1fr 3fr 1fr;
   gap: 1rem;
@@ -82,7 +83,7 @@ html {
   padding: 1rem;
   color: rgb(196, 196, 196);
   font-size: 1.6rem;
-  margin-top: 9.9rem;
+  /* margin-top: 9.9rem; */
 }
 
 .footer > div {
@@ -170,6 +171,9 @@ html {
   align-items: center;
 }
 /* mobile */
+
+
+
 /* MAIN SECTIONS */
 
 .player-board{
