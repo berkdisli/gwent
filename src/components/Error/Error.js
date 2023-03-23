@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo from '../images/error.gif';
+import logo from '../../images/error.gif';
 
 const Error = ({ message }) => {
     return (
