@@ -48,10 +48,10 @@ const PlayerBoard = () => {
     setCurrentDeck(monster);
   }, [monster]);
 
-  const toggleButtonGroup = (current, siblings, className) => { 
+  const toggleButtonGroup = (current, siblings, className) => {
     Array.from(siblings).map((sibling) => sibling.classList.remove(className));
     current.classList.add(className);
-  }
+  };
 
   const chooseDeck = (event) => {
     switch (event.target.innerText) {
@@ -76,12 +76,18 @@ const PlayerBoard = () => {
       default:
         setCurrentDeck([]);
     }
-    toggleButtonGroup(event.currentTarget, event.currentTarget.parentElement.children, styles.chosen)
-    player === 1 ? dispatch(setPlayer1Deck(currentDeck)) : dispatch(setPlayer2Deck(currentDeck));
+    toggleButtonGroup(
+      event.currentTarget,
+      event.currentTarget.parentElement.children,
+      styles.chosen
+    );
+    player === 1
+      ? dispatch(setPlayer1Deck(currentDeck))
+      : dispatch(setPlayer2Deck(currentDeck));
   };
 
   const handleReady = () => {
-    player === 1 ? dispatch(setPlayer(2)) : navigate("/game");
+    player === 1 ? dispatch(setPlayer(2)) : navigate('/firstMove');
   };
 
   const handleGoBack = () => {
@@ -116,8 +122,9 @@ const PlayerBoard = () => {
                 Go Back to Player 1
               </div>
             )}
+
             <div className='player__button' onClick={handleReady}>
-              I am Ready
+              I am ready
             </div>
           </div>
         </>
