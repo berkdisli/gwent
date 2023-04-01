@@ -205,6 +205,13 @@ html {
   cursor: pointer;
 }
 
+.game-board{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  height: 100vh;
+  padding: 1vh;
+}
+
 
 @media (max-width: 600px) {
   .gwent-logo {
