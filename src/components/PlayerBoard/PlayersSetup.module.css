@@ -1,0 +1,40 @@
+/* DECKS */
+.deck{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  height: 20vh;
+  width: auto;
+  aspect-ratio: 2/3;
+  transition: all 500 ease-in;
+}
+
+.deck:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.decksWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+/* CARDS LIST */
+.cardsList{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+/* ElSE */
+
+.chosen{
+  box-shadow: 0 0 8px rgb(187, 114, 50);
+}

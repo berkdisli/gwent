@@ -11,3 +11,13 @@
   height: 20vh;
   background-color: aquamarine;
 }
+
+.exitGameBtn{
+  width: 70%;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  background-color: rgb(142, 73, 73);
+  color: white;
+  cursor: pointer;
+}
