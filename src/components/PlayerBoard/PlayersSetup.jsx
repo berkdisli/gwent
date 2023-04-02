@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { Loading, Error, CardsList, CardDecks } from "../components";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   fetchCards,
-  selectLoading,
   selectError,
+  selectLoading,
   selectMonsters,
   selectNeutral,
   selectNilfgaard,
   selectNorthernRealms,
   selectScoiatael,
   selectSkellige,
-} from "../features/cardsSlice";
-import { DECK } from "../static/values";
-import { selectPlayer, setPlayer } from "../features/playerSlice";
-import { useNavigate } from "react-router-dom";
+} from "../../features/cardsSlice";
+import {
+  selectPlayer,
+  setPlayer,
+  setPlayer1Deck,
+  setPlayer2Deck,
+} from "../../features/playerSlice";
+import { DECK } from "../../static/values";
+import { CardDecks, CardsList } from "./CardsOptions";
+import Error from "../Error/Error";
+import Loading from "../Loading/Loading";
 
-const PlayerBoard = () => {
+import styles from "./PlayersSetup.module.css";
+import { useMemo } from "react";
+
+const PlayersSetup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,13 +44,18 @@ const PlayerBoard = () => {
 
   const [currentDeck, setCurrentDeck] = useState([]);
 
-  useEffect(() => {
+  useMemo(() => {
     dispatch(fetchCards());
   }, [dispatch]);
 
-  useEffect(() => {
+  useMemo(() => {
     setCurrentDeck(monster);
-  }, [monster]);
+  }, [monster])
+
+  const toggleButtonGroup = (current, siblings, className) => {
+    Array.from(siblings).map((sibling) => sibling.classList.remove(className));
+    current.classList.add(className);
+  };
 
   const chooseDeck = (event) => {
     switch (event.target.innerText) {
@@ -65,32 +80,68 @@ const PlayerBoard = () => {
       default:
         setCurrentDeck([]);
     }
+    toggleButtonGroup(
+      event.currentTarget,
+      event.currentTarget.parentElement.children,
+      styles.chosen
+    );
   };
 
+  useEffect(() => {
+    player === 1
+      ? dispatch(setPlayer1Deck(currentDeck))
+      : dispatch(setPlayer2Deck(currentDeck));
+  }, [currentDeck, dispatch, player]);
+
   const handleReady = () => {
-    player === 1 ? dispatch(setPlayer(2)) : navigate('/game');
+    if (player === 1) {
+      dispatch(setPlayer(2));
+      // set to default (monster)
+      toggleButtonGroup(
+        document.querySelector(`#${DECK.MONSTER}`),
+        document.querySelectorAll(`.${styles.deck}`),
+        styles.chosen
+      );
+    } else {
+      navigate("/firstMove");
+    }
   };
 
   const handleGoBack = () => {
     dispatch(setPlayer(1));
-  }
+  };
+
+  const handleExitGame = () => {
+    dispatch(setPlayer(1));
+    dispatch(setPlayer1Deck([]));
+    dispatch(setPlayer2Deck([]));
+    navigate("/");
+  };
 
   return (
     <section className='player-board'>
+      <div onClick={handleExitGame}>Go back</div>
       {error && <Error message={error} />}
       {loading ? (
         <Loading />
       ) : (
         <>
-          <div className="player__header">Player {player}</div>
+          <div className='player__header'>Player {player}</div>
           <CardDecks handleClick={chooseDeck} />
           <CardsList cards={currentDeck} />
           <div className='player__footer'>
             {player === 2 && (
-              <div className='player__button' id='goBack-btn' onClick={handleGoBack}>Go Back to Player 1</div>
+              <div
+                className='player__button'
+                id='goBack-btn'
+                onClick={handleGoBack}
+              >
+                Go Back to Player 1
+              </div>
             )}
+
             <div className='player__button' onClick={handleReady}>
-              I am Ready
+              I am ready
             </div>
           </div>
         </>
@@ -99,4 +150,4 @@ const PlayerBoard = () => {
   );
 };
 
-export default PlayerBoard;
+export default PlayersSetup;

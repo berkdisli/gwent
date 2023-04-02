@@ -1,0 +1,17 @@
+.middlePanel{
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  gap: 1vh;
+  border: 1px solid;
+}
+
+.playerHand{
+  width: 100%;
+  background-color: antiquewhite;
+}
+
+.board{
+  width: 100%;
+  background-color: antiquewhite;
+}

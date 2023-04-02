@@ -1,0 +1,10 @@
+.moveChooser{
+  width: 70vw;
+  height: 60vh;
+  background-color: rgb(176, 138, 211);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 20vh auto;
+}
