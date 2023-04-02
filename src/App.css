@@ -172,39 +172,36 @@ html {
 }
 /* mobile */
 
-
-
 /* MAIN SECTIONS */
 
-.player-board{
+.player-board {
   width: 80vw;
   margin: 2rem auto;
 }
 
-.player__header{
+.player__header {
   background-color: rgb(181, 163, 135);
   width: fit-content;
   padding: 1rem;
   margin: 0 0 2rem 0;
 }
 
-.player__footer{
+.player__footer {
   display: flex;
   justify-content: flex-end;
 }
 
-#goBack-btn{
+#goBack-btn {
   margin-right: auto;
 }
 
-.player__button{
+.player__button {
   margin: 0;
   width: fit-content;
   padding: 1rem;
   background-color: rgb(181, 163, 135);
   cursor: pointer;
 }
-
 
 @media (max-width: 600px) {
   .gwent-logo {
