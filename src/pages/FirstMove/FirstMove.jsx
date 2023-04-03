@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setPlayer } from "../../features/playerSlice";
 import styles from "./FirstMove.module.css";
+import { BsPerson } from "react-icons/bs";
 
 // TODO:
 // add getting a player who makes a first move randomly
@@ -20,13 +21,14 @@ const FirstMove = () => {
 
   return (
     <section className={styles.moveChooser}>
-      First move makes
-      <div onClick={handleClick} id='1'>
-        Player 1
-      </div>
-      <div onClick={handleClick} id='2'>
-        Player 2
-      </div>
+      <h1>Who starts to play?</h1>
+      <button className={styles.playerChoose} onClick={handleClick} id="1">
+        Player 1 <BsPerson />
+      </button>
+
+      <button className={styles.playerChoose} onClick={handleClick} id="2">
+        Player 2 <BsPerson />
+      </button>
     </section>
   );
 };

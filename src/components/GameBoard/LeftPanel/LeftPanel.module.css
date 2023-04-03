@@ -1,4 +1,4 @@
-.leftPanel{
+.leftPanel {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -6,19 +6,25 @@
   border: 1px solid;
 }
 
-.player{
+.player {
   width: 100%;
   height: 25vh;
   background-color: bisque;
 }
 
-.playerSwitch{
-  width: 70%;
-  height: 3rem;
-  line-height: 3rem;
-  text-align: center;
-  background-color: rgb(142, 73, 73);
-  color: white;
+.playerSwitch {
+  height: 4rem;
+  width: 8rem;
+  font-size: larger;
   cursor: pointer;
+  color: rgb(70, 2, 2);
+  background-color: #fff;
+  padding-top: 2vh;
+  display: flex;
+  border-radius: 5px;
 }
 
+.playerSwitch:hover {
+  background-color: rgb(70, 2, 2);
+  color: azure;
+}

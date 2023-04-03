@@ -1,10 +1,31 @@
-.moveChooser{
+.moveChooser {
   width: 70vw;
   height: 60vh;
-  background-color: rgb(176, 138, 211);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   margin: 20vh auto;
+}
+
+h1 {
+  color: white;
+}
+
+.playerChoose {
+  height: 4rem;
+  width: 8rem;
+  font-size: larger;
+  cursor: pointer;
+  color: rgb(70, 2, 2);
+  background-color: #fff;
+  padding-top: 3vh;
+  display: flex;
+  border-radius: 5px;
+  padding-left: 6px;
+}
+
+.playerChoose:hover {
+  background-color: rgb(70, 2, 2);
+  color: azure;
 }

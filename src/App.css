@@ -25,6 +25,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  background-image: url(images/background.jpg);
+  background-color: rgb(70, 2, 2);
+}
 /* header */
 .header {
   background-color: rgb(16, 90, 56);
@@ -37,8 +42,6 @@ html {
 }
 /* start page */
 .home {
-  background-image: url(images/background.jpg);
-  background-color: rgb(70, 2, 2);
   height: 100vh;
 }
 
@@ -49,7 +52,6 @@ html {
 }
 
 .start-button {
-  font-family: witcher;
   height: 5rem;
   width: 8rem;
   font-size: larger;
