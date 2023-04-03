@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { DECK } from "../static/values";
+import { DECK, BASE_URL } from "../static/values";
 
 const initialState = {
   loading: false,
@@ -14,10 +14,9 @@ const initialState = {
   neutral: [],
 };
 
-export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
-  const response = await axios.get(
-    "https://api.gwent.one/?key=data&version=1.0.0.15"
-  );
+
+export const fetchCards = createAsyncThunk("cards/fetchCards", async (endpoint) => {
+  const response = await axios.get(`${BASE_URL}${endpoint}`);
   return response.data;
 });
 
