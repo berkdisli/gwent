@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./Card.module.css";
 
 const Card = (props) => {
-  const {name, category, ability, attributes } = props.card;
+  const {id, name, category, ability, attributes } = props.card;
 
   return (
     <article className={styles.card}>
       <div className={styles.card__element}>
-        <img src='' alt='character'></img>
+        <img src={`https://gwent.one/image/gwent/assets/card/art/low/${id.art}.jpg`} alt='character'></img>
       </div>
       <div className={styles.card__element}>
         <p>Faction:</p>

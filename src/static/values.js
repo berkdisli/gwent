@@ -6,3 +6,5 @@ export const DECK = {
   SKELLIGE: 'Skellige',
   NEUTRAL: 'Neutral',
 }
+
+export const BASE_URL = "https://api.gwent.one";
