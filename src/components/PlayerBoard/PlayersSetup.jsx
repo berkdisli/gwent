@@ -45,7 +45,7 @@ const PlayersSetup = () => {
   const [currentDeck, setCurrentDeck] = useState([]);
 
   useMemo(() => {
-    dispatch(fetchCards());
+    dispatch(fetchCards('/?key=data&response=json'));
   }, [dispatch]);
 
   useMemo(() => {
